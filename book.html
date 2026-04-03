@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WehazitSelam-Hyponsis.CH</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <header>
+
+          <div class="logo">
+    <img src="photos\WhatsApp Image 2026-03-27 at 17.30.47.jpeg" alt="wehazitselam">
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">Experience</a>
+    <a href="service.html">Services</a>
+   <a href="resource.html"> Resource</a>
+      <a href="contact.html">Contact</a>
+  </nav>
+    </header>
+ <div class="calendar-container">
+    <h2>Book a Date</h2>
+    <form id="bookingForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" required>
+
+      <label for="date">Select Date</label>
+      <input type="date" id="date" required>
+
+      <button type="submit">Book Now</button>
+    </form>
+    <div id="paypal-button-container"></div>
+  </div>
+
+  <!-- Load PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+  <script>
+  
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Booking saved! Now proceed to payment.");
+    });
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '20.00' // Set your booking price here
+            }
+          }]
+        });
+      },
+       onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Payment completed by ' + details.payer.name.given_name);
+        });
+      }
+    }).render('#paypal-button-container');
+  </script>
+ <section id="booking">
+  <h2>prices per service/book </h2>
+ 
+ <ul>
+  <li>1h15 ደቒቕን  150 dollars ፦</li>
+<li> 5 ነናይ  1h ሰዓት 500 dollars ፦</li>
+<li>7 ነናይ 45 ደቒቕ  700 dollares ፦</li>
+<li>10 ነናይ 50 ደቒቕ  1000 ፦</li>
+<li>ካብ ወዲ 12 ዓመት ንላዕሊ 250 fr ፦ ን 2h ሰዓት</li>
+<li>5 ነናይ ሓደ 1h:15  ደቒቕ ክፍሊት 650 fr ፦</li>
+<li>7 ነናይ 1h5 ደቒቕን ክፍሊት  900 fr ፦</li>
+<li>10 ነናይ 1h ሰዓት ክፍሊት 1200 fr ፦</li>
+ </ul>
+</section>
+<div class="col">
+  <h2>Contact Us</h2>
+  <p>Email: deluokubay@gmail.com<br>Phone: +256 757 590 103X</p>
+  <p>Location kampala,gaba road <br>
+  UMUNA PLAZA </p>
+</div>
+  <p>© 2026 </p>
+<p> we are here with everthing possible to built self love!</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
